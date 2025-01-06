@@ -1,0 +1,34 @@
+# Script PowerShell Profil Pribadi
+
+# Informasi Profil
+$nama = "Juwanto"
+$jabatan = "Supervisor"
+$tanggal = (Get-Date).ToString("dd MMMM yyyy")
+
+# Path Foto (Ganti dengan nama file foto Anda)
+$fotoPath = "C:\Users\sjuwanto\Desktop\Juwanto\Desktop\DEKTOP\Data Ato\Me\foto_juwanto.jpg"
+
+# Fungsi untuk menampilkan foto
+function Tampilkan-Foto {
+    param (
+        [string]$pathFoto
+    )
+    if (Test-Path $pathFoto) {
+        Write-Host "`n[Foto Anda ditampilkan di aplikasi eksternal]"
+        Start-Process $pathFoto
+    } else {
+        Write-Host "Foto tidak ditemukan di path: $pathFoto" -ForegroundColor Red
+    }
+}
+
+# Menampilkan Profil di Konsol
+Write-Host "====================================" -ForegroundColor Cyan
+Write-Host "          PROFIL PRIBADI           " -ForegroundColor Cyan
+Write-Host "====================================" -ForegroundColor Cyan
+Write-Host "Nama     : $nama" -ForegroundColor Green
+Write-Host "Jabatan  : $jabatan" -ForegroundColor Green
+Write-Host "Tanggal  : $tanggal" -ForegroundColor Green
+Write-Host "====================================" -ForegroundColor Cyan
+
+# Menampilkan Foto
+Tampilkan-Foto -pathFoto $fotoPath
